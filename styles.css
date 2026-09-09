@@ -313,21 +313,32 @@
   .sec .prose { margin-left: auto; margin-right: auto; }
   .sec .lines { max-width: 460px; margin-left: auto; margin-right: auto; }
 
-  /* About — "Get in touch" aligns to the same centered prose column (no abrupt jump) */
+  /* About — "Get in touch" as a navbar-width card: blurb left, contacts right */
   #contact {
-    max-width: var(--measure);
-    margin: clamp(34px, 4.5vw, 52px) auto 0;
-    text-align: left;
+    max-width: 1120px;
+    margin: clamp(40px, 5vw, 66px) auto 0;
+    padding: clamp(24px, 2.8vw, 38px) clamp(24px, 3vw, 44px);
+    border: 1px solid var(--rule); border-radius: 20px;
+    background:
+      linear-gradient(160deg, rgba(15,107,84,.05), rgba(15,107,84,0) 55%),
+      var(--paper-2);
+    box-shadow: 0 12px 34px rgba(20,25,20,.05), inset 0 1px 0 rgba(255,255,255,.6);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 22px 60px; align-items: center; text-align: left;
   }
+  #contact .contact-left { max-width: 40ch; }
   #contact .contact-h {
-    font-family: var(--serif); font-weight: 700; font-size: 22px;
-    letter-spacing: -0.01em; margin: 0 0 4px; color: var(--ink);
+    font-family: var(--serif); font-weight: 700; font-size: 24px;
+    letter-spacing: -0.01em; margin: 0 0 8px; color: var(--ink);
   }
-  #contact .intro-sub {
-    max-width: 52ch; margin: 6px 0 18px;
-    font-size: 15.5px; line-height: 1.55; color: var(--muted);
+  #contact .contact-left .intro-sub {
+    margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted);
   }
-  #contact .lines { max-width: none; margin-left: 0; margin-right: 0; }
+  #contact .lines { max-width: none; margin: 0; }
+  @media (max-width: 720px) {
+    #contact { grid-template-columns: 1fr; gap: 22px; padding: 24px; }
+  }
 
   /* Strengths / Why me — centered card grid */
   .strengths {
