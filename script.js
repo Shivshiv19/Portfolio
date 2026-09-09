@@ -132,7 +132,7 @@ window.__revealed = true;
   var ctx = canvas.getContext('2d');
   var section = canvas.closest('.otc');
   var DOT = (section && getComputedStyle(section).getPropertyValue('--otc-bg').trim()) || '#0F6B54';
-  var CELL = 26, MAX = 26, K = 0.001; // higher K = smaller reveal spotlight
+  var CELL = 26, MAX = 26, K = 0.00096; // higher K = smaller reveal spotlight (~2% larger spot)
   var mouseX = null, mouseY = null, things = [], W = 0, H = 0, dpr = 1;
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
