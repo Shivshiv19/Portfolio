@@ -323,3 +323,33 @@ window.__revealed = true;
   setInterval(frame, 100);
   window.addEventListener('resize', refreshZones);
 })();
+
+/* Off-the-clock caption shuffle — rotates a small set of on-brand lines
+   under the "Why so Serious" reveal. Random start, gentle cross-fade. */
+(function () {
+  var cap = document.querySelector('.otc-cap');
+  if (!cap) return;
+
+  var LINES = [
+    "Take the work seriously, not yourself.",
+    "Fewer clicks, more smiles.",
+    "I remove things until it feels obvious.",
+    "Make it work, make it kind."
+  ];
+
+  var i = Math.floor(Math.random() * LINES.length);
+  cap.textContent = LINES[i];
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return; // one random line, no auto-rotation
+
+  setInterval(function () {
+    if (document.hidden) return;
+    i = (i + 1) % LINES.length;
+    cap.classList.add('is-fading');
+    setTimeout(function () {
+      cap.textContent = LINES[i];
+      cap.classList.remove('is-fading');
+    }, 560); // matches the .55s CSS fade
+  }, 5000);
+})();
