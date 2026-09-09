@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How I use AI in my work · Shiv Kanojiya</title>
+<meta name="description" content="How I use AI as a product designer — to compress research, prototype in real code, and ship faster. Not designing for me, just clearing the slow parts so my hours go to judgment." />
+<meta name="author" content="Shiv Kanojiya" />
+<meta name="theme-color" content="#F4F3EE" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How I use AI in my work · Shiv Kanojiya" />
+<meta property="og:description" content="How I use AI to compress research, prototype in real code, and ship faster — including a full-stack CRM built solo in 15 days." />
+<meta property="og:image" content="../og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="../og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+<script>
+  document.documentElement.classList.add('reveal-on');
+  addEventListener('load', function () {
+    setTimeout(function () {
+      if (!window.__revealed) document.documentElement.classList.remove('reveal-on');
+    }, 1500);
+  });
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="../index.html" class="mark" aria-label="Shiv Kanojiya — home">Shiv Kanojiya</a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav aria-label="Primary">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#how-i-ai">How I AI</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#about">About</a>
+      <a href="../Shiv-Kanojiya-Resume.pdf" download class="nav-resume-m">Resume</a>
+    </nav>
+    <a href="../Shiv-Kanojiya-Resume.pdf" download class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap"><a class="backlink" href="../index.html">&larr; Home</a></div>
+
+  <section>
+    <div class="wrap sec">
+      <div class="aihero reveal">
+        <span class="eyebrow">How I AI</span>
+        <h2>How I use AI in my work.</h2>
+        <p class="intro-sub">
+          For the past year, AI has changed how I work &mdash; not by designing
+          for me, but by clearing the slow parts so my hours go where judgment
+          matters. It&rsquo;s how I designed and built a full-stack CRM, solo,
+          in 15 days. Here&rsquo;s where it fits in my process.
+        </p>
+        <span class="ai-callout">This site was built with AI too. 🙂</span>
+      </div>
+
+      <!-- Category 1 -->
+      <div class="aicat reveal">
+        <div class="cat-head">
+          <span class="eyebrow">01 &middot; Research &amp; discovery</span>
+          <p>Getting to the real problem faster &mdash; and catching the edge cases before I design a screen.</p>
+        </div>
+        <div class="ai-grid">
+          <div class="ai-card">
+            <div class="thumb"><img loading="lazy" src="../images/ai-workflow.jpg" alt="Notebook LM mindmap breaking a transport project into workflows" /></div>
+            <div class="cbody">
+              <span class="ai-badge">Notebook LM</span>
+              <h4>Workflow mapping</h4>
+              <p>I feed messy notes, docs and call transcripts to AI to map how a team actually works &mdash; and surface the edge cases before a single screen exists.</p>
+            </div>
+          </div>
+          <div class="ai-card">
+            <div class="thumb"><video src="../images/pressure-test.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
+            <div class="cbody">
+              <span class="ai-badge">Claude</span>
+              <h4>Pressure-testing the model</h4>
+              <p>AI as a sparring partner on the schema and role model &mdash; poking holes in the data model early, while it&rsquo;s still cheap to change.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="aicat reveal">
+        <div class="cat-head">
+          <span class="eyebrow">02 &middot; Prototyping &amp; building</span>
+          <p>Skipping static mockups &mdash; the prototype is real, working code from the start.</p>
+        </div>
+        <div class="ai-grid">
+          <div class="ai-card">
+            <div class="thumb"><video src="../images/bobba-mockup.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
+            <div class="cbody">
+              <span class="ai-badge">Cursor · Claude Code</span>
+              <h4>Prototyping in real code</h4>
+              <p>Instead of a flat mockup, I prototype in working code &mdash; so stakeholders click the real thing, and the prototype becomes the product.</p>
+            </div>
+          </div>
+          <div class="ai-card">
+            <div class="thumb compare">
+              <div class="ba-slider" data-ba>
+                <img class="ba-after" loading="lazy" src="../images/ewallet-final.jpg" alt="Finished EWallet dashboard UI" />
+                <img class="ba-before" loading="lazy" src="../images/wireframe-sketch.jpg" alt="Hand-drawn wireframe of the same dashboard" />
+                <span class="ba-label ba-label-before">Wireframe</span>
+                <span class="ba-label ba-label-after">Final UI</span>
+                <div class="ba-divider" aria-hidden="true"></div>
+                <button class="ba-handle" type="button" role="slider" tabindex="0"
+                        aria-label="Drag to compare wireframe and final UI"
+                        aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-4 6 4 6M15 6l4 6-4 6"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="cbody">
+              <span class="ai-badge">Loveable</span>
+              <h4>Idea to interface, in minutes</h4>
+              <p>Spinning up a rough working UI to test a flow fast, then hand-finishing the parts that actually need craft.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="aicat reveal">
+        <div class="cat-head">
+          <span class="eyebrow">03 &middot; Content &amp; shipping</span>
+          <p>Drafting the unglamorous parts so nothing gets missed and I can ship sooner.</p>
+        </div>
+        <div class="ai-grid">
+          <div class="ai-card">
+            <div class="thumb"><img loading="lazy" src="../images/edge-cases.svg" alt="A checklist panel showing edge-case states covered — empty, loading, error, offline and success, each with sample copy" /></div>
+            <div class="cbody">
+              <span class="ai-badge">Claude</span>
+              <h4>Drafting the edge cases</h4>
+              <p>Generating edge cases, empty states, error copy and tests with AI &mdash; so the boring-but-critical states are covered, not forgotten.</p>
+            </div>
+          </div>
+          <div class="ai-card">
+            <div class="thumb"><img loading="lazy" src="../images/crm-15days.jpg" alt="ROQIT CRM sign-in with a live devices inventory overview, built solo in 15 days" /></div>
+            <div class="cbody">
+              <span class="ai-badge">Claude Code</span>
+              <h4>A full-stack CRM in 15 days</h4>
+              <p>AI carried the research and boilerplate; I owned the schema, auth and interface. Blank page to deployed, solo, in 15 days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="ai-tools reveal" style="margin-top:56px;">Tools I reach for &mdash; Claude Code &middot; Cursor &middot; Loveable &middot; Notebook LM &middot; Figma</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="casenav" aria-label="More">
+      <a class="prev" href="../index.html"><span>Back to</span>Home</a>
+      <a class="next" href="../index.html#contact"><span>Next</span>Get in touch</a>
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">
+      <span>&copy; <span id="year"></span> Shiv Kanojiya</span>
+      <span class="foot-loc">Hyderabad / <span id="local-time">&mdash;</span></span>
+    </div>
+    <nav class="foot-right" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/shivkanojiya" target="_blank" rel="noopener">LinkedIn <span class="foot-arrow" aria-hidden="true">&#8599;</span></a>
+      <a href="mailto:shivkanojiya19@gmail.com">Email <span class="foot-arrow" aria-hidden="true">&#8599;</span></a>
+      <button type="button" class="foot-top" aria-label="Back to top">Back to top <span class="foot-arrow" aria-hidden="true">&#8593;</span></button>
+    </nav>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Local Claude Code config & memory
+.claude/
+
+# Stale standalone build artifacts (not part of the deployed site)
+*-standalone.html

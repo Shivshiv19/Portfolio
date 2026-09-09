@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bobba Express — First-mile logistics platform · Shiv Kanojiya</title>
+<meta name="description" content="How I designed and built a first-mile logistics platform from PRD to production in three months — live across Bangalore and Hyderabad." />
+<meta name="author" content="Shiv Kanojiya" />
+<meta name="theme-color" content="#F4F3EE" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Bobba Express — First-mile logistics platform · Shiv Kanojiya" />
+<meta property="og:description" content="How I designed and built a first-mile logistics platform from PRD to production in three months — live across Bangalore and Hyderabad." />
+<meta property="og:image" content="../og-bobba.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="../og-bobba.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+<script>
+  /* Reveal guard: hide-for-animation only while JS is alive;
+     restore full visibility if the reveal engine never loads. */
+  document.documentElement.classList.add('reveal-on');
+  addEventListener('load', function () {
+    setTimeout(function () {
+      if (!window.__revealed) document.documentElement.classList.remove('reveal-on');
+    }, 1500);
+  });
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="../index.html" class="mark" aria-label="Shiv Kanojiya — home">Shiv Kanojiya</a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav aria-label="Primary">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#how-i-ai">How I AI</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#about">About</a>
+      <a href="../Shiv-Kanojiya-Resume.pdf" download class="nav-resume-m">Resume</a>
+    </nav>
+    <a href="../Shiv-Kanojiya-Resume.pdf" download class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap"><a class="backlink" href="../index.html#work">&larr; All work</a></div>
+
+<article id="cs-bobba" class="study">
+    <div class="wrap">
+      <div class="cols">
+        <div class="gutter">Case study · one</div>
+        <div>
+          <div class="reveal study-head">
+            <span class="study-kicker">First-mile logistics</span>
+            <h2>A logistics platform, designed and built <em>from PRD to production</em>.</h2>
+            <p class="study-tldr"><b>TL;DR</b> Designed &amp; built a first-mile logistics platform &mdash; customer, admin &amp; vendor portals plus a driver app, on the live Emirates SkyCargo API. Live in Bangalore &amp; Hyderabad in 3 months.</p>
+            <p class="summary">
+              Bobba Express is a first-mile logistics platform for the
+              Bangalore and Hyderabad air-cargo markets &mdash; booking
+              shipments, generating AWBs against the Emirates SkyCargo API,
+              raising invoices, and dispatching drivers. I designed, built,
+              tested, and shipped it end to end in three months, then
+              watched real customers start booking on it.
+            </p>
+            <div class="study-meta">
+              <span><b>Role</b> designer &amp; builder, product owner</span>
+              <span><b>Owned</b> scoping, design, build, Emirates integration, go-live</span>
+              <span><b>Worked with</b> a product manager &amp; a developer</span>
+              <span><b>Timeline</b> 3 months · Jun&ndash;Aug 2026</span>
+              <span><b>Surfaces</b> customer, admin &amp; vendor portals + driver app</span>
+            </div>
+            <div class="study-tags">
+              <span>First-mile logistics</span><span>Multi-surface</span><span>Live carrier API</span><span>WCAG AA</span><span>Design + build</span>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>The problem</h4>
+            <p class="problem-lede">
+              First-mile pickup &mdash; getting a shipment from the shipper
+              to the air-cargo hub &mdash; was fragmented and manual, spread
+              across phone calls, spreadsheets, and disconnected tools.
+            </p>
+            <div class="prose">
+              <p>
+                The business needed one platform to book pickups, quote
+                freight correctly &mdash; including volumetric weight &mdash;
+                manage the full AWB lifecycle, and hand off cleanly to
+                carriers. With a lean team and no design-to-engineering
+                handoff, the design problem and the delivery problem were
+                one: whatever I designed, I had to be able to ship.
+              </p>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Scoping &amp; requirements</h4>
+            <p class="problem-lede">
+              Building lean, I had to scope the whole system up front &mdash;
+              so discovery was mostly mapping the edge cases that only surface
+              in production.
+            </p>
+            <div class="prose">
+              <p>
+                These are the questions I worked through with ops before a
+                single screen &mdash; alongside a product manager on scope and
+                priorities and a developer to get the platform
+                production-ready and shipped. The answers became the PRD, the
+                AWB state machine below, and the rules the platform enforces.
+              </p>
+            </div>
+            <div class="usergrid twoup">
+              <div class="user">
+                <h5>Booking lifecycle</h5>
+                <p>Edit or cancel until pickup; one booking to one or many shipments; auto-saved drafts, edit, and duplicate.</p>
+              </div>
+              <div class="user">
+                <h5>Pickup &amp; assignment</h5>
+                <p>Rule-based by zone, vendor, and capacity; scheduled 10am&ndash;2pm (after 2pm rolls to next day); OTP or photo pickup proof.</p>
+              </div>
+              <div class="user">
+                <h5>Weight &amp; billing</h5>
+                <p>Dimensional weight vs actual &mdash; declared 5&nbsp;kg but actually 8&nbsp;kg triggers auto-rebill, hold, or notify.</p>
+              </div>
+              <div class="user">
+                <h5>Exceptions</h5>
+                <p>Scan, OTP, and address failures; two delivery re-attempts; explicit hold reasons and resolution; returns routed hub&nbsp;&rarr;&nbsp;customer.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Design approach</h4>
+            <p class="problem-lede">
+              I worked it the way you&rsquo;d work any messy operational
+              problem &mdash; widen to understand the real flow, then narrow
+              to a system I could actually ship.
+            </p>
+            <div class="prose">
+              <p>
+                Two diamonds. The first was about the problem: ride along on
+                pickups, watch where the manual process broke, and only then
+                write the PRD and the state machine. The second was about the
+                solution: sketch the intakes on paper, pressure-test them
+                against edge cases, and converge on what shipped.
+              </p>
+            </div>
+            <div class="plate">
+              <div class="plate-body">
+                <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Double-diamond design process: Discover, Define, Develop, Deliver, with what happened at each phase">
+                  <style>
+                    .dd-dia { fill: var(--mark); fill-opacity: .07; stroke: var(--mark); stroke-width: 1.2; }
+                    .dd-mid { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 4; }
+                    .dd-ph { fill: var(--ink); font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 500; text-anchor: middle; }
+                    .dd-mode { fill: var(--mark); font-family: 'Poppins', sans-serif; font-size: 9px; letter-spacing: .12em; text-anchor: middle; }
+                    .dd-note { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 10px; text-anchor: middle; letter-spacing: .02em; }
+                    .dd-kick { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 11px; letter-spacing: .1em; }
+                  </style>
+                  <text class="dd-kick" x="20" y="26">DESIGN PROCESS &middot; DOUBLE DIAMOND</text>
+                  <line class="dd-mid" x1="20" y1="150" x2="880" y2="150"/>
+                  <polygon class="dd-dia" points="40,150 230,72 420,150 230,228"/>
+                  <polygon class="dd-dia" points="460,150 650,72 840,150 650,228"/>
+                  <text class="dd-mode" x="135" y="120">DIVERGE</text>
+                  <text class="dd-mode" x="325" y="120">CONVERGE</text>
+                  <text class="dd-mode" x="555" y="120">DIVERGE</text>
+                  <text class="dd-mode" x="745" y="120">CONVERGE</text>
+                  <text class="dd-ph" x="135" y="262">Discover</text>
+                  <text class="dd-ph" x="325" y="262">Define</text>
+                  <text class="dd-ph" x="555" y="262">Develop</text>
+                  <text class="dd-ph" x="745" y="262">Deliver</text>
+                  <text class="dd-note" x="135" y="284">Rode pickups; mapped the flow</text>
+                  <text class="dd-note" x="325" y="284">PRD + AWB state machine</text>
+                  <text class="dd-note" x="555" y="284">Sketched three intakes</text>
+                  <text class="dd-note" x="745" y="284">Built, tested, shipped</text>
+                </svg>
+              </div>
+              <div class="plate-caption">
+                <span class="label">Plate 01</span>
+                <span class="desc">How the work actually ran &mdash; two rounds of widening and narrowing, from riding along on pickups to a shipped platform.</span>
+              </div>
+            </div>
+            <div class="plate">
+              <div class="plate-body">
+                <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Early low-fidelity wireframe of the booking screen with three intake modes — Single, Bulk, Walk-in — and a live freight-quote panel">
+                  <style>
+                    .wf-frame { fill: none; stroke: var(--ink); stroke-width: 1.2; }
+                    .wf-box { fill: var(--paper); stroke: var(--rule); stroke-width: 1; }
+                    .wf-rail { fill: var(--paper-2); stroke: var(--rule); stroke-width: 1; }
+                    .wf-dot { fill: var(--subtle); fill-opacity: .55; }
+                    .wf-line { stroke: var(--subtle); stroke-width: 5; stroke-linecap: round; stroke-opacity: .7; }
+                    .wf-tabOn { fill: var(--mark); }
+                    .wf-tabTxt { fill: var(--paper); font-family: 'Poppins', sans-serif; font-size: 11px; text-anchor: middle; }
+                    .wf-tabOff { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 11px; text-anchor: middle; }
+                    .wf-lbl { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 9px; letter-spacing: .1em; }
+                    .wf-quote { fill: var(--mark); fill-opacity: .09; stroke: var(--mark); stroke-width: 1; }
+                    .wf-chip { fill: var(--mark); }
+                    .wf-chipTxt { fill: var(--paper); font-family: 'Poppins', sans-serif; font-size: 10px; text-anchor: middle; }
+                    .wf-kick { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 11px; letter-spacing: .1em; }
+                    .wf-note { fill: var(--mark); font-family: 'Poppins', sans-serif; font-style: italic; font-size: 12px; }
+                  </style>
+                  <text class="wf-kick" x="20" y="26">EARLY WIREFRAME &middot; BOOKING INTAKE</text>
+                  <rect class="wf-frame" x="20" y="42" width="860" height="338" rx="6"/>
+                  <!-- nav rail -->
+                  <rect class="wf-rail" x="20" y="42" width="86" height="338"/>
+                  <circle class="wf-dot" cx="63" cy="78" r="9"/>
+                  <circle class="wf-dot" cx="63" cy="120" r="9"/>
+                  <circle class="wf-dot" cx="63" cy="162" r="9"/>
+                  <circle class="wf-dot" cx="63" cy="204" r="9"/>
+                  <!-- intake tabs -->
+                  <rect class="wf-tabOn" x="130" y="70" width="110" height="30" rx="4"/>
+                  <text class="wf-tabTxt" x="185" y="90">Single</text>
+                  <rect class="wf-box" x="250" y="70" width="110" height="30" rx="4"/>
+                  <text class="wf-tabOff" x="305" y="90">Bulk</text>
+                  <rect class="wf-box" x="370" y="70" width="120" height="30" rx="4"/>
+                  <text class="wf-tabOff" x="430" y="90">Walk-in</text>
+                  <!-- form: shipper -->
+                  <text class="wf-lbl" x="130" y="132">SHIPPER</text>
+                  <rect class="wf-box" x="130" y="140" width="360" height="34" rx="4"/>
+                  <line class="wf-line" x1="146" y1="157" x2="300" y2="157"/>
+                  <!-- consignee -->
+                  <text class="wf-lbl" x="130" y="198">CONSIGNEE</text>
+                  <rect class="wf-box" x="130" y="206" width="360" height="34" rx="4"/>
+                  <line class="wf-line" x1="146" y1="223" x2="330" y2="223"/>
+                  <!-- pieces / weight -->
+                  <text class="wf-lbl" x="130" y="264">PIECES</text>
+                  <rect class="wf-box" x="130" y="272" width="170" height="34" rx="4"/>
+                  <line class="wf-line" x1="146" y1="289" x2="210" y2="289"/>
+                  <text class="wf-lbl" x="320" y="264">WEIGHT (KG)</text>
+                  <rect class="wf-box" x="320" y="272" width="170" height="34" rx="4"/>
+                  <line class="wf-line" x1="336" y1="289" x2="400" y2="289"/>
+                  <!-- dimensions -->
+                  <text class="wf-lbl" x="130" y="330">DIMENSIONS &nbsp;L &times; W &times; H</text>
+                  <rect class="wf-box" x="130" y="338" width="360" height="26" rx="4"/>
+                  <!-- freight quote panel -->
+                  <rect class="wf-quote" x="524" y="70" width="332" height="294" rx="6"/>
+                  <text class="wf-lbl" x="546" y="100">FREIGHT QUOTE</text>
+                  <line class="wf-line" x1="546" y1="118" x2="834" y2="118" stroke-opacity=".4"/>
+                  <text class="wf-lbl" x="546" y="150">Actual weight</text>
+                  <line class="wf-line" x1="740" y1="146" x2="834" y2="146"/>
+                  <text class="wf-lbl" x="546" y="184">Volumetric</text>
+                  <line class="wf-line" x1="740" y1="180" x2="834" y2="180"/>
+                  <rect class="wf-chip" x="546" y="206" width="150" height="26" rx="13"/>
+                  <text class="wf-chipTxt" x="621" y="223">CHARGEABLE = max</text>
+                  <line class="wf-line" x1="740" y1="219" x2="834" y2="219"/>
+                  <rect class="wf-box" x="546" y="262" width="288" height="52" rx="6"/>
+                  <text class="wf-lbl" x="562" y="284">TOTAL</text>
+                  <line class="wf-line" x1="720" y1="292" x2="820" y2="292" stroke="var(--mark)" stroke-opacity=".8"/>
+                  <text class="wf-note" x="546" y="348">Auto-rebill if actual &gt; declared.</text>
+                </svg>
+              </div>
+              <div class="plate-caption">
+                <span class="label">Plate 02</span>
+                <span class="desc">An early booking wireframe. Three intakes on one screen &mdash; Single, Bulk, Walk-in &mdash; and a freight panel that charges on volumetric-vs-actual, the edge case that decides the invoice.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>How a shipment moves</h4>
+            <p class="problem-lede">
+              One AWB, five handoffs &mdash; customer to carrier, with the
+              hub-ops team in the middle.
+            </p>
+            <div class="processflow">
+              <div class="step">
+                <span class="pn">01</span>
+                <h5>Book &amp; generate AWB</h5>
+                <p>Customer creates the shipment in the portal; the system issues the AWB.</p>
+              </div>
+              <div class="step">
+                <span class="pn">02</span>
+                <h5>Scan &amp; pickup</h5>
+                <p>Vendor scans the parcel on pickup; the AWB goes live in the system.</p>
+              </div>
+              <div class="step">
+                <span class="pn">03</span>
+                <h5>Route to hub ops</h5>
+                <p>Shipment details flow to the hub-operations app for handling.</p>
+              </div>
+              <div class="step">
+                <span class="pn">04</span>
+                <h5>Hub verification</h5>
+                <p>Parcels reach the hub; ops verify the boxes against the manifest.</p>
+              </div>
+              <div class="step">
+                <span class="pn">05</span>
+                <h5>Connect &amp; move</h5>
+                <p>The hub connects the entries; the shipment moves on to the carrier.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Key decisions</h4>
+            <div class="decisions">
+              <div class="decision">
+                <div class="n">i.</div>
+                <div>
+                  <h5>Modeled the domain as an explicit AWB state machine.</h5>
+                  <p>
+                    Rather than ad-hoc statuses, I gave every shipment one
+                    source of truth &mdash; booking &rarr; pickup &rarr; hub
+                    &rarr; manifest &rarr; carrier handoff. More upfront
+                    modeling, but it made role-based access, tracking, and
+                    exception handling tractable instead of brittle.
+                  </p>
+                  <span class="tradeoff">More modeling upfront, in exchange for a system that stayed tractable as it grew.</span>
+                </div>
+              </div>
+              <div class="decision">
+                <div class="n">ii.</div>
+                <div>
+                  <h5>Three portals and three ways in, on one token system.</h5>
+                  <p>
+                    A customer portal for self-serve booking, an admin panel
+                    for ops, and a vendor portal for the field &mdash; all on
+                    shared design tokens and a CSS-variable architecture, with
+                    components built to WCAG AA (contrast, visible focus, and
+                    target sizes), so the product stays consistent,
+                    white-labelable, and usable for everyone. Inside
+                    booking, I designed three distinct intakes &mdash; Single
+                    Shipment, Bulk Shipment, and Walk-in Customer &mdash;
+                    because a self-serve enterprise shipper and a counter
+                    agent are not the same user and shouldn&rsquo;t share a
+                    form.
+                  </p>
+                  <span class="tradeoff">More flows to design and maintain, in exchange for each user meeting a screen built for them.</span>
+                </div>
+              </div>
+              <div class="decision">
+                <div class="n">iii.</div>
+                <div>
+                  <h5>Designed against the live carrier API, not a mock.</h5>
+                  <p>
+                    I chose to build every shipment on the real Emirates
+                    SkyCargo API from day one &mdash; so the constraints that
+                    would actually bite at go-live (serviceable pincodes,
+                    India-origin rules, Master/Child structure) shaped the
+                    flow while it was still cheap to change, instead of
+                    surfacing as production surprises. The mechanics are in
+                    <em>Systems it talks to</em> below.
+                  </p>
+                  <span class="tradeoff">Real integration cost more coordination upfront, but removed the biggest go-live risk.</span>
+                </div>
+              </div>
+              <div class="decision">
+                <div class="n">iv.</div>
+                <div>
+                  <h5>A driver app built to shorten &ldquo;assigned&rdquo; to &ldquo;moving.&rdquo;</h5>
+                  <p>
+                    The revenue lever in first-mile isn&rsquo;t the booking
+                    screen, it&rsquo;s the gap before a driver actually rolls.
+                    I designed the driver app around starting the trip fast
+                    and with fewer stalls &mdash; so each driver completes
+                    more trips per shift, and more completed trips is simply
+                    more revenue.
+                  </p>
+                  <span class="tradeoff">A fourth surface to own, justified by the metric it moves.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Systems it talks to</h4>
+            <p class="problem-lede">
+              The hardest part of first-mile isn&rsquo;t the booking screen
+              &mdash; it&rsquo;s making a live carrier system the single
+              source of truth without ever showing the user its seams.
+            </p>
+            <div class="usergrid oneup">
+              <div class="user">
+                <h5>Emirates SkyCargo &middot; carrier API</h5>
+                <p>AWB generation, multi-piece Master/Child modeling, and AWB-level tracking come straight off the live SkyCargo API &mdash; no mocking &mdash; with invoicing hung off the same source of truth. That meant designing serviceable-pincode limits and India-origin rules as first-class states in the flow, not error dialogs bolted on after &mdash; and working through sandbox access and carrier enablement to get there.</p>
+              </div>
+            </div>
+            <div class="plate" style="margin-top: 40px;">
+              <div class="plate-body">
+                <svg viewBox="0 0 960 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Bobba shipment screen with the backend systems behind it: Emirates SkyCargo API, a payment API, realtime OTP, AWS hosting, and the database">
+                  <style>
+                    .uh-kick { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 11px; letter-spacing: .1em; }
+                    .uh-screen { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+                    .uh-chip { fill: var(--paper); stroke: var(--ink); stroke-width: 1.2; }
+                    .uh-infra { fill: var(--paper-2); stroke: var(--rule); stroke-width: 1; }
+                    .uh-title { fill: var(--ink); font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; }
+                    .uh-sub { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 9px; letter-spacing: .03em; }
+                    .uh-edge { stroke: var(--mark); stroke-width: 1.4; fill: none; }
+                    .uh-dot { fill: var(--mark); }
+                    .uh-run { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 9px; letter-spacing: .1em; text-anchor: middle; }
+                  </style>
+                  <text class="uh-kick" x="20" y="26">UNDER THE HOOD &middot; WHAT POWERS THE SHIPMENT SCREEN</text>
+                  <image href="../images/bobba-2.jpg" x="270" y="60" width="420" height="198" preserveAspectRatio="xMidYMid meet"/>
+                  <rect class="uh-screen" x="270" y="60" width="420" height="198" rx="4"/>
+                  <path class="uh-edge" d="M232 104 L270 120"/>
+                  <circle class="uh-dot" cx="270" cy="120" r="3.5"/>
+                  <path class="uh-edge" d="M232 214 L270 205"/>
+                  <circle class="uh-dot" cx="270" cy="205" r="3.5"/>
+                  <path class="uh-edge" d="M728 150 L690 165"/>
+                  <circle class="uh-dot" cx="690" cy="165" r="3.5"/>
+                  <rect class="uh-chip" x="18" y="78" width="214" height="56" rx="6"/>
+                  <text class="uh-title" x="34" y="103">Emirates SkyCargo API</text>
+                  <text class="uh-sub" x="34" y="121">live AWB &middot; rates &middot; tracking</text>
+                  <rect class="uh-chip" x="18" y="188" width="214" height="56" rx="6"/>
+                  <text class="uh-title" x="34" y="213">Payment API</text>
+                  <text class="uh-sub" x="34" y="231">invoicing &middot; collections</text>
+                  <rect class="uh-chip" x="728" y="124" width="214" height="56" rx="6"/>
+                  <text class="uh-title" x="744" y="149">Realtime OTP</text>
+                  <text class="uh-sub" x="744" y="167">pickup verification</text>
+                  <path class="uh-edge" d="M380 258 L380 316"/>
+                  <path class="uh-edge" d="M580 258 L580 316"/>
+                  <text class="uh-run" x="480" y="292">runs on</text>
+                  <rect class="uh-infra" x="270" y="316" width="200" height="56" rx="6"/>
+                  <text class="uh-title" x="286" y="341">AWS</text>
+                  <text class="uh-sub" x="286" y="359">hosting &middot; infrastructure</text>
+                  <rect class="uh-infra" x="490" y="316" width="200" height="56" rx="6"/>
+                  <text class="uh-title" x="506" y="341">Database</text>
+                  <text class="uh-sub" x="506" y="359">AWB state &middot; source of truth</text>
+                </svg>
+              </div>
+              <div class="plate-caption">
+                <span class="label">Plate 03</span>
+                <span class="desc">One screen, the whole stack behind it. What the user reads as a single shipment view is a live Emirates SkyCargo call, a payment API, realtime OTP, and a database &mdash; hosted on AWS, with the seams hidden.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Artifact</h4>
+            <div class="plate">
+              <div class="plate-body">
+                <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AWB state machine: booking to carrier handoff, with exception branches">
+                  <style>
+                    .node  { fill: var(--paper); stroke: var(--ink); stroke-width: 1.2; }
+                    .nodeActive { fill: var(--mark); stroke: var(--mark); }
+                    .nlabel { fill: var(--ink); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; text-anchor: middle; }
+                    .nlabelI { fill: var(--paper); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; text-anchor: middle; }
+                    .edge  { stroke: var(--ink); stroke-width: 1.2; fill: none; marker-end: url(#arrow); }
+                    .edgeAlt { stroke: var(--mark); stroke-width: 1.2; fill: none; stroke-dasharray: 4 3; marker-end: url(#arrowM); }
+                    .elabel { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 9px; text-anchor: middle; letter-spacing: .04em; }
+                    .anno  { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: .04em; }
+                    .annoI  { fill: var(--mark); font-family: 'Poppins', sans-serif; font-style: italic; font-size: 12px; }
+                  </style>
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M0 0 L10 5 L0 10 z" fill="var(--ink)"/>
+                    </marker>
+                    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M0 0 L10 5 L0 10 z" fill="var(--mark)"/>
+                    </marker>
+                  </defs>
+
+                  <text class="annoI" x="20" y="30">AWB lifecycle — one source of truth per shipment</text>
+
+                  <!-- Main chain -->
+                  <rect class="node" x="20"  y="60" width="120" height="44" rx="4"/>
+                  <text class="nlabel" x="80"  y="87">Booked</text>
+                  <rect class="node" x="180" y="60" width="120" height="44" rx="4"/>
+                  <text class="nlabel" x="240" y="87">Pickup</text>
+                  <rect class="nodeActive" x="340" y="60" width="120" height="44" rx="4"/>
+                  <text class="nlabelI" x="400" y="87">At hub</text>
+                  <rect class="node" x="500" y="60" width="120" height="44" rx="4"/>
+                  <text class="nlabel" x="560" y="87">Manifested</text>
+                  <rect class="node" x="660" y="60" width="140" height="44" rx="4"/>
+                  <text class="nlabel" x="730" y="87">Carrier handoff</text>
+
+                  <path class="edge" d="M140 82 L176 82"/>
+                  <text class="elabel" x="158" y="74">assign</text>
+                  <path class="edge" d="M300 82 L336 82"/>
+                  <text class="elabel" x="318" y="74">scan-in</text>
+                  <path class="edge" d="M460 82 L496 82"/>
+                  <text class="elabel" x="478" y="74">manifest</text>
+                  <path class="edge" d="M620 82 L656 82"/>
+                  <text class="elabel" x="638" y="74">tender</text>
+
+                  <!-- Exception branch -->
+                  <rect class="node" x="180" y="176" width="120" height="40" rx="4" stroke-dasharray="4 3"/>
+                  <text class="nlabel" x="240" y="201">Exception</text>
+                  <rect class="node" x="340" y="176" width="120" height="40" rx="4" stroke-dasharray="4 3"/>
+                  <text class="nlabel" x="400" y="201">Re-attempt</text>
+                  <path class="edgeAlt" d="M240 104 L240 174"/>
+                  <text class="elabel" x="278" y="140">missed / RTO</text>
+                  <path class="edgeAlt" d="M300 196 L336 196"/>
+                  <path class="edgeAlt" d="M400 176 C400 130 320 120 260 108"/>
+
+                  <!-- Master/Child -->
+                  <rect class="node" x="500" y="176" width="300" height="40" rx="4" stroke-dasharray="4 3"/>
+                  <text class="nlabel" x="650" y="201">Master AWB → n × Child AWB</text>
+                  <path class="edgeAlt" d="M560 104 L560 174"/>
+                  <text class="elabel" x="600" y="140">multi-piece</text>
+
+                  <text class="anno" x="20" y="256">Role-based access, tracking, and exception handling all derive from this one machine.</text>
+                  <text class="anno" x="20" y="272">Emirates SkyCargo integration maps directly onto the Master/Child model and AWB-level tracking.</text>
+                </svg>
+              </div>
+              <div class="plate-caption">
+                <span class="label">Plate 04</span>
+                <span class="desc">The AWB state machine. Every shipment has one source of truth from booking to carrier handoff; exceptions and multi-piece Master/Child shipments are modeled as first-class branches, not special cases.</span>
+              </div>
+            </div>
+            <div class="shots">
+              <figure class="shot"><img loading="lazy" src="../images/bobba-1.jpg" alt="Bobba Express admin dashboard — shipment status and revenue overview" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Screenshot</div><figcaption>Admin dashboard &mdash; live shipment status and revenue at a glance.</figcaption></figure>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Outcome</h4>
+            <p class="prose" style="margin-bottom: 32px;">
+              Designed, developed, tested, and shipped in three months, live
+              across Bangalore and Hyderabad. Then the part that matters: it
+              got used. Inside the first two weeks on the market &mdash;
+            </p>
+            <div class="outcomes">
+              <div class="outcome">
+                <div class="n">12</div>
+                <div class="l">Customers onboarded in the first two weeks</div>
+              </div>
+              <div class="outcome">
+                <div class="n">80</div>
+                <div class="l">Shipments booked in the same window</div>
+              </div>
+              <div class="outcome">
+                <div class="n">40%</div>
+                <div class="l">Of those first 80 shipments were repeat bookings</div>
+              </div>
+            </div>
+            <p class="prose" style="margin-top: 32px;">
+              Repeat business this early is the signal I trust most: people
+              booked a second time because the first booking worked, not
+              because anyone chased them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="wrap">
+    <nav class="casenav" aria-label="More case studies">
+      <a class="prev" href="../index.html#work"><span>Back to</span>All work</a>
+      <a class="next" href="railparcel.html"><span>Next</span>RailParcel</a>
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">
+      <span>&copy; <span id="year"></span> Shiv Kanojiya</span>
+      <span class="foot-loc">Hyderabad / <span id="local-time">&mdash;</span></span>
+    </div>
+    <nav class="foot-right" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/shivkanojiya" target="_blank" rel="noopener">LinkedIn <span class="foot-arrow" aria-hidden="true">&#8599;</span></a>
+      <a href="mailto:shivkanojiya19@gmail.com">Email <span class="foot-arrow" aria-hidden="true">&#8599;</span></a>
+      <button type="button" class="foot-top" aria-label="Back to top">Back to top <span class="foot-arrow" aria-hidden="true">&#8593;</span></button>
+    </nav>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+</html>

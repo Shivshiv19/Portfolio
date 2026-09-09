@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RailParcel — Digitising Indian Railways' parcel network · Shiv Kanojiya</title>
+<meta name="description" content="Interaction design for RailParcel, South Central Railway's parcel platform — off paper and live across 7 cities and 17 stations, with 45k+ consignments and 3x revenue in six months." />
+<meta name="author" content="Shiv Kanojiya" />
+<meta name="theme-color" content="#F4F3EE" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="RailParcel — Digitising Indian Railways' parcel network · Shiv Kanojiya" />
+<meta property="og:description" content="Interaction design for RailParcel, South Central Railway's parcel platform — off paper and live across 7 cities and 17 stations, with 45k+ consignments and 3x revenue in six months." />
+<meta property="og:image" content="../og-railparcel.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="../og-railparcel.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+<script>
+  /* Reveal guard: hide-for-animation only while JS is alive;
+     restore full visibility if the reveal engine never loads. */
+  document.documentElement.classList.add('reveal-on');
+  addEventListener('load', function () {
+    setTimeout(function () {
+      if (!window.__revealed) document.documentElement.classList.remove('reveal-on');
+    }, 1500);
+  });
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="../index.html" class="mark" aria-label="Shiv Kanojiya — home">Shiv Kanojiya</a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav aria-label="Primary">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#how-i-ai">How I AI</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#about">About</a>
+      <a href="../Shiv-Kanojiya-Resume.pdf" download class="nav-resume-m">Resume</a>
+    </nav>
+    <a href="../Shiv-Kanojiya-Resume.pdf" download class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap"><a class="backlink" href="../index.html#work">&larr; All work</a></div>
+
+<article id="cs-railparcel" class="study">
+    <div class="wrap">
+      <div class="cols">
+        <div class="gutter">Case study · two</div>
+        <div>
+          <div class="reveal study-head">
+            <span class="study-kicker">Government &amp; rail logistics</span>
+            <h2>Getting Indian Railways&rsquo; parcel network <em>off paper and live</em>.</h2>
+            <p class="study-tldr"><b>TL;DR</b> Interaction design + field research to get Indian Railways&rsquo; parcel booking off paper &mdash; across CRIS, SBI &amp; four logistics partners. Live in 7 cities and 17 stations, 45k+ consignments in six months.</p>
+            <p class="summary">
+              RailParcel moves parcel booking, tracking, and last-mile
+              coordination for South Central Railway off paper and onto one
+              digital system. I was the interaction designer &mdash; running
+              requirement gathering and on-ground research at parcel offices
+              and the CRIS office, and shaping the interaction design across
+              a customer app, admin and staff web portals, and integrations
+              with CRIS, SBI, and last-mile partner ETO Motors.
+            </p>
+            <div class="study-meta">
+              <span><b>Role</b> interaction designer</span>
+              <span><b>Owned</b> requirement gathering, research, interaction design</span>
+              <span><b>Client</b> South Central Railway · Indian Railways</span>
+              <span><b>Worked with</b> SCR &amp; CRIS teams, SBI, plus devs, PM &amp; CEO</span>
+              <span><b>Timeline</b> ~5 months</span>
+            </div>
+            <div class="study-tags">
+              <span>Gov-scale</span><span>Field research</span><span>Multi-user</span><span>Trilingual</span><span>WCAG AA</span>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>The problem</h4>
+            <p class="problem-lede">
+              Parcel booking on the rail network still ran on paper &mdash;
+              physical queues, hand-written documentation, and no way to
+              see where a consignment was once it entered the system.
+            </p>
+            <div class="prose">
+              <p>
+                For customers that meant uncertainty and wasted trips; for
+                railway staff, slow, error-prone workflows that didn&rsquo;t
+                scale. And the platform had to serve several very different
+                users at once, each with a different level of digital
+                comfort &mdash; which is where the work really started.
+              </p>
+              <p>
+                The brief for our window was blunt: get operations live,
+                station by station, with a system simple enough that anyone
+                could book a parcel. On a government rail deadline, the
+                constraints weren&rsquo;t obstacles around the design &mdash;
+                they were the design.
+              </p>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Research &amp; discovery</h4>
+            <p class="problem-lede">
+              Before a single screen, I went where the work happened
+              &mdash; SCR parcel offices and the CRIS office &mdash; and
+              watched how a booking actually got made.
+            </p>
+            <div class="prose">
+              <p>
+                The paper was a symptom, not the problem. Bookings ran on
+                hand-written forms and tribal knowledge, and the same
+                consignment could be described three different ways by three
+                different people. To design one system, I first had to map
+                who touched a parcel &mdash; and what each of them actually
+                needed.
+              </p>
+            </div>
+            <div class="usergrid">
+              <div class="user">
+                <h5>Customers</h5>
+                <p>Often booking their first parcel on a phone. Need it obvious, few steps, and in their own language.</p>
+              </div>
+              <div class="user">
+                <h5>Parcel-office staff</h5>
+                <p>Process bookings and handoffs at the counter &mdash; fast, and under a queue.</p>
+              </div>
+              <div class="user">
+                <h5>SCR admin</h5>
+                <p>Oversee operations, partners, and performance across stations and cities.</p>
+              </div>
+              <div class="user">
+                <h5>Loaders</h5>
+                <p>The on-ground layer physically moving parcels through the network.</p>
+              </div>
+            </div>
+            <div class="prose">
+              <p>
+                <b>The insight that shaped everything:</b> the same screen
+                had to be legible to a first-time app user <em>and</em> a
+                counter agent working at speed. That&rsquo;s why the booking
+                flow got radically simplified and went trilingual, while the
+                hard complexity &mdash; restricted-item rules, CRIS and SBI
+                integration &mdash; was pushed out of the user&rsquo;s way.
+                Every decision below traces back to something I saw in the
+                field.
+              </p>
+              <p>
+                None of it was solo. I worked with the SCR railway team and
+                the CRIS team in Delhi to understand the PMS and its APIs, and
+                the SBI team on payments &mdash; while internally aligning with
+                our developers, a project manager, and the CEO to keep scope,
+                delivery, and a hard rollout deadline moving together.
+              </p>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>How a parcel moves</h4>
+            <p class="problem-lede">
+              One booking, five stages &mdash; door to door, across the rail
+              network and two integration partners.
+            </p>
+            <div class="processflow">
+              <div class="step">
+                <span class="pn">01</span>
+                <h5>Book &amp; pay</h5>
+                <p>Customer books a parcel and pays online via SBI; a PRR is generated.</p>
+              </div>
+              <div class="step">
+                <span class="pn">02</span>
+                <h5>First-mile pickup</h5>
+                <p>Partner ETO Motors collects from the door and brings it to the station.</p>
+              </div>
+              <div class="step">
+                <span class="pn">03</span>
+                <h5>Station &amp; load</h5>
+                <p>The parcel is booked into CRIS and loaded onto the train.</p>
+              </div>
+              <div class="step">
+                <span class="pn">04</span>
+                <h5>Rail transit</h5>
+                <p>It moves station to station across the network, tracked in plain milestones.</p>
+              </div>
+              <div class="step">
+                <span class="pn">05</span>
+                <h5>Last-mile delivery</h5>
+                <p>At the destination, it&rsquo;s delivered to the door or collected at the station.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Key decisions</h4>
+            <div class="decisions">
+              <div class="decision">
+                <div class="n">i.</div>
+                <div>
+                  <h5>Shipped the core path, not the catalogue.</h5>
+                  <p>
+                    With a hard goal of getting operations live, we cut the
+                    product back to a reliable booking-to-tracking spine
+                    rather than a broad-but-shallow first version. My research
+                    fed that call &mdash; the friction I saw at parcel offices
+                    argued for a working core in real hands over feature
+                    coverage no-one had used yet.
+                  </p>
+                  <span class="tradeoff">Fewer features at launch, in exchange for a spine that actually held under live load.</span>
+                </div>
+              </div>
+              <div class="decision">
+                <div class="n">ii.</div>
+                <div>
+                  <h5>A negative list, not a permitted list.</h5>
+                  <p>
+                    Railways restrict certain parcels &mdash; dangerous
+                    goods and the like. Instead of enumerating every allowed
+                    category, we listed only what wasn&rsquo;t allowed and
+                    flagged an item only if it hit the restricted list. The
+                    rules stayed enforced, the API response stayed light,
+                    and the booking flow stayed fast.
+                  </p>
+                  <span class="tradeoff">The restricted list has to be maintained &mdash; a small ops cost for a much faster booking path.</span>
+                </div>
+              </div>
+              <div class="decision">
+                <div class="n">iii.</div>
+                <div>
+                  <h5>Interaction design for someone&rsquo;s first booking on a phone.</h5>
+                  <p>
+                    Many customers were booking their first parcel on an app
+                    at all. That set the bar for the interaction design I
+                    owned: a minimal, few-step flow, trilingual support
+                    &mdash; Hindi, English, Telugu &mdash; for the southern
+                    rollout, and WCAG conformance so the product worked for
+                    the widest possible range of people, not just the
+                    confident ones.
+                  </p>
+                  <span class="tradeoff">Every added step or untranslated screen was treated as a user we&rsquo;d lose. So there were very few.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Systems it talks to</h4>
+            <p class="problem-lede">
+              A booking isn&rsquo;t done until it&rsquo;s live in the
+              railway&rsquo;s own system, paid for, and picked up &mdash; so
+              the design had to hold across three external systems I
+              didn&rsquo;t control.
+            </p>
+            <div class="usergrid threeup">
+              <div class="user">
+                <h5>CRIS &middot; Parcel Management System</h5>
+                <p>Indian Railways&rsquo; official booking backbone. Every consignment books straight into PMS &mdash; I designed the flow so railway rules (restricted items, station codes, manifesting) were enforced by the system, and a first-time user never saw a CRIS code.</p>
+              </div>
+              <div class="user">
+                <h5>Four logistics partners</h5>
+                <p>Bringex Logistics, Aadha Trip, ETO Motors &amp; Green Drive run the first- and last-mile road legs. I designed one handoff model that holds across all four, so a parcel stays one source of truth across rail and road &mdash; no &ldquo;where is it now&rdquo; gap between networks.</p>
+              </div>
+              <div class="user">
+                <h5>SBI &middot; Payments</h5>
+                <p>The State Bank payment gateway. A trilingual pay step that had to read as trustworthy to someone booking a parcel by rail online for the first time.</p>
+              </div>
+            </div>
+            <div class="plate" style="margin-top: 40px;">
+              <div class="plate-body">
+                <svg viewBox="0 0 960 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The RailParcel booking screen with the systems behind it: CRIS PMS API, SBI payment, realtime OTP, four logistics partners, AWS hosting and the database">
+                  <style>
+                    .uh-kick { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 11px; letter-spacing: .1em; }
+                    .uh-screen { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+                    .uh-chip { fill: var(--paper); stroke: var(--ink); stroke-width: 1.2; }
+                    .uh-infra { fill: var(--paper-2); stroke: var(--rule); stroke-width: 1; }
+                    .uh-title { fill: var(--ink); font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; }
+                    .uh-sub { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 9px; letter-spacing: .03em; }
+                    .uh-edge { stroke: var(--mark); stroke-width: 1.4; fill: none; }
+                    .uh-dot { fill: var(--mark); }
+                    .uh-run { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 9px; letter-spacing: .1em; text-anchor: middle; }
+                  </style>
+                  <text class="uh-kick" x="20" y="26">UNDER THE HOOD &middot; WHAT POWERS THE BOOKING SCREEN</text>
+                  <image href="../images/railparcel-app-3.jpg" x="392" y="60" width="176" height="384" preserveAspectRatio="xMidYMid meet"/>
+                  <rect class="uh-screen" x="392" y="60" width="176" height="384" rx="12"/>
+                  <!-- connectors + anchor dots -->
+                  <path class="uh-edge" d="M270 119 L392 132"/>
+                  <circle class="uh-dot" cx="392" cy="132" r="3.5"/>
+                  <path class="uh-edge" d="M270 279 L392 272"/>
+                  <circle class="uh-dot" cx="392" cy="272" r="3.5"/>
+                  <path class="uh-edge" d="M690 119 L568 132"/>
+                  <circle class="uh-dot" cx="568" cy="132" r="3.5"/>
+                  <path class="uh-edge" d="M690 279 L568 276"/>
+                  <circle class="uh-dot" cx="568" cy="276" r="3.5"/>
+                  <!-- left services -->
+                  <rect class="uh-chip" x="20" y="90" width="250" height="58" rx="6"/>
+                  <text class="uh-title" x="36" y="115">CRIS &middot; PMS API</text>
+                  <text class="uh-sub" x="36" y="133">books into Indian Railways</text>
+                  <rect class="uh-chip" x="20" y="250" width="250" height="58" rx="6"/>
+                  <text class="uh-title" x="36" y="275">SBI &middot; Payment API</text>
+                  <text class="uh-sub" x="36" y="293">the online pay step</text>
+                  <!-- right services -->
+                  <rect class="uh-chip" x="690" y="90" width="250" height="58" rx="6"/>
+                  <text class="uh-title" x="706" y="115">Realtime OTP</text>
+                  <text class="uh-sub" x="706" y="133">pickup &amp; delivery proof</text>
+                  <rect class="uh-chip" x="690" y="250" width="250" height="58" rx="6"/>
+                  <text class="uh-title" x="706" y="275">Logistics partners</text>
+                  <text class="uh-sub" x="706" y="293">first &amp; last-mile &middot; &times;4</text>
+                  <!-- foundation -->
+                  <path class="uh-edge" d="M448 444 L392 492"/>
+                  <path class="uh-edge" d="M512 444 L568 492"/>
+                  <text class="uh-run" x="480" y="474">runs on</text>
+                  <rect class="uh-infra" x="300" y="492" width="176" height="56" rx="6"/>
+                  <text class="uh-title" x="316" y="517">AWS</text>
+                  <text class="uh-sub" x="316" y="535">hosting &middot; infrastructure</text>
+                  <rect class="uh-infra" x="484" y="492" width="176" height="56" rx="6"/>
+                  <text class="uh-title" x="500" y="517">Database</text>
+                  <text class="uh-sub" x="500" y="535">consignment &middot; tracking</text>
+                </svg>
+              </div>
+              <div class="plate-caption">
+                <span class="label">Plate 01</span>
+                <span class="desc">One screen, the whole stack behind it. Booking a parcel commits a CRIS PMS entry, an SBI payment, a pickup OTP, and a partner handoff at once &mdash; persisted in the database, hosted on AWS, with none of it shown to the person booking.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Artifact</h4>
+            <div class="plate">
+              <div class="plate-body">
+                <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-screen booking flow: book, pay, track, with trilingual support and negative-list item check">
+                  <style>
+                    .frame { fill: var(--paper); stroke: var(--ink); stroke-width: 1; opacity: .95; }
+                    .row   { fill: var(--paper); stroke: var(--rule); }
+                    .txt   { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 11px; }
+                    .strong { fill: var(--ink); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; }
+                    .accent { fill: var(--mark); }
+                    .accentTxt { fill: var(--paper); font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+                    .chip  { fill: var(--paper); stroke: var(--mark); }
+                    .chipTxt { fill: var(--mark); font-family: 'Poppins', sans-serif; font-size: 10px; }
+                    .dot   { fill: var(--mark); }
+                    .dotOff { fill: none; stroke: var(--rule); stroke-width: 1.4; }
+                    .anno  { fill: var(--muted); font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: .04em; }
+                    .annoI  { fill: var(--mark); font-family: 'Poppins', sans-serif; font-style: italic; font-size: 12px; }
+                  </style>
+
+                  <!-- Phone 1: Book -->
+                  <rect class="frame" x="20" y="20" width="180" height="280" rx="6"/>
+                  <text class="annoI" x="20" y="14">i · Book</text>
+                  <text class="strong" x="34" y="48">Book a parcel · 1 of 3</text>
+                  <rect class="chip" x="120" y="38" width="66" height="16" rx="8"/>
+                  <text class="chipTxt" x="128" y="50">EN · हि · తె</text>
+                  <text class="txt" x="34" y="72">From</text>
+                  <rect class="row" x="34" y="78" width="152" height="26" rx="3"/>
+                  <text class="strong" x="42" y="95">Secunderabad</text>
+                  <text class="txt" x="34" y="122">To</text>
+                  <rect class="row" x="34" y="128" width="152" height="26" rx="3"/>
+                  <text class="strong" x="42" y="145">Vijayawada</text>
+                  <text class="txt" x="34" y="172">Item type</text>
+                  <rect class="row" x="34" y="178" width="152" height="26" rx="3"/>
+                  <text class="strong" x="42" y="195">Documents</text>
+                  <text class="txt" x="34" y="220">Checked against restricted list &#10003;</text>
+                  <rect class="accent" x="34" y="246" width="152" height="36" rx="4"/>
+                  <text class="accentTxt" x="82" y="269">Continue</text>
+
+                  <!-- Phone 2: Pay -->
+                  <rect class="frame" x="240" y="20" width="180" height="280" rx="6"/>
+                  <text class="annoI" x="240" y="14">ii · Pay</text>
+                  <text class="strong" x="254" y="48">Pay · SBI</text>
+                  <rect class="row" x="254" y="66" width="152" height="26" rx="3"/>
+                  <text class="txt" x="262" y="83">Base fare</text>
+                  <text class="strong" x="360" y="83">₹180</text>
+                  <rect class="row" x="254" y="98" width="152" height="26" rx="3"/>
+                  <text class="txt" x="262" y="115">Handling</text>
+                  <text class="strong" x="360" y="115">₹40</text>
+                  <rect class="row" x="254" y="130" width="152" height="26" rx="3"/>
+                  <text class="strong" x="262" y="147">Total</text>
+                  <text class="strong" x="360" y="147">₹220</text>
+                  <rect class="accent" x="254" y="246" width="152" height="36" rx="4"/>
+                  <text class="accentTxt" x="292" y="269">Pay &amp; book</text>
+
+                  <!-- Phone 3: Track -->
+                  <rect class="frame" x="460" y="20" width="180" height="280" rx="6"/>
+                  <text class="annoI" x="460" y="14">iii · Track</text>
+                  <text class="strong" x="474" y="48">AWB 5540 · in transit</text>
+                  <circle class="dot" cx="482" cy="76" r="5"/>
+                  <text class="strong" x="498" y="80">Booked</text>
+                  <circle class="dot" cx="482" cy="106" r="5"/>
+                  <text class="strong" x="498" y="110">At station</text>
+                  <circle class="dot" cx="482" cy="136" r="5"/>
+                  <text class="strong" x="498" y="140">In transit</text>
+                  <circle class="dotOff" cx="482" cy="166" r="5"/>
+                  <text class="txt" x="498" y="170">Out for delivery</text>
+                  <circle class="dotOff" cx="482" cy="196" r="5"/>
+                  <text class="txt" x="498" y="200">Delivered</text>
+                  <line x1="482" y1="81" x2="482" y2="191" stroke="var(--rule)" stroke-width="1.4"/>
+                  <text class="txt" x="474" y="238">Plain milestones,</text>
+                  <text class="txt" x="474" y="252">no railway codes.</text>
+
+                  <!-- Annotations -->
+                  <text class="anno" x="670" y="60">A · Three steps, booking to paid.</text>
+                  <text class="anno" x="670" y="76">     No account wall before you</text>
+                  <text class="anno" x="670" y="92">     can quote a parcel.</text>
+                  <text class="anno" x="670" y="126">B · Language switch on every</text>
+                  <text class="anno" x="670" y="142">     screen &mdash; EN / हिन्दी / తెలుగు.</text>
+                  <text class="anno" x="670" y="176">C · Item check runs against a</text>
+                  <text class="anno" x="670" y="192">     negative list. Flags only what&#39;s</text>
+                  <text class="anno" x="670" y="208">     restricted; everything else flows.</text>
+                  <text class="anno" x="670" y="242">D · Status as plain milestones,</text>
+                  <text class="anno" x="670" y="258">     not CRIS codes &mdash; legible to a</text>
+                  <text class="anno" x="670" y="274">     first-time app user.</text>
+                </svg>
+              </div>
+              <div class="plate-caption">
+                <span class="label">Plate 02</span>
+                <span class="desc">The customer booking flow. Three steps to a paid booking, a language switch on every screen, a negative-list item check, and tracking told in plain milestones rather than railway codes.</span>
+              </div>
+            </div>
+            <div class="gallery-label">Customer app &mdash; book to track, four screens</div>
+            <div class="shots phones">
+              <figure class="shot"><img loading="lazy" src="../images/railparcel-app-1.jpg" alt="RailParcel app — home: book or track a parcel" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Mobile screen</div><figcaption>Home &mdash; book or track</figcaption></figure>
+              <figure class="shot"><img loading="lazy" src="../images/railparcel-app-2.jpg" alt="RailParcel app — add address and items" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Mobile screen</div><figcaption>Add address &amp; items</figcaption></figure>
+              <figure class="shot"><img loading="lazy" src="../images/railparcel-app-3.jpg" alt="RailParcel app — summary and payment" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Mobile screen</div><figcaption>Summary &amp; payment</figcaption></figure>
+              <figure class="shot"><img loading="lazy" src="../images/railparcel-app-4.jpg" alt="RailParcel app — live parcel tracking" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Mobile screen</div><figcaption>Live tracking</figcaption></figure>
+            </div>
+            <div class="gallery-label">Admin &amp; staff portal &mdash; web</div>
+            <div class="shots cols-2">
+              <figure class="shot"><img loading="lazy" src="../images/railparcel-admin-1.jpg" alt="RailParcel admin portal — operations dashboard" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Admin portal</div><figcaption>Operations dashboard</figcaption></figure>
+              <figure class="shot"><img loading="lazy" src="../images/railparcel-admin-2.jpg" alt="RailParcel admin portal — station bookings and operations (customer details redacted)" onerror="this.closest('.shot').classList.add('ph')" /><div class="ph-box" aria-hidden="true">Admin portal</div><figcaption>Bookings &amp; operations</figcaption></figure>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Validating in the field</h4>
+            <p class="problem-lede">
+              On a government deadline, the rollout itself was the test. We
+              went live station by station rather than big-bang &mdash; so
+              each station had to prove the flow before the next one opened.
+            </p>
+            <div class="prose">
+              <p>
+                Every new station was a live check on the thing research
+                couldn&rsquo;t fully answer: could a first-time user complete
+                a booking on their own, and could counter staff keep pace
+                under a queue? Watching real bookings &mdash; where people
+                hesitated, what staff had to explain, which of the three
+                languages they switched to &mdash; fed back into the flow
+                before the next rollout, so the design was corrected against
+                real use, not assumptions. The adoption and 3&times; revenue
+                that followed weren&rsquo;t the goal of the design; they were
+                the evidence it held.
+              </p>
+            </div>
+          </div>
+
+          <div class="block reveal">
+            <h4>Outcome</h4>
+            <p class="prose" style="margin-bottom: 32px;">
+              Live across <b>7 cities and 17 stations</b>, with a Pan-India
+              rollout scheduled for September 2026. In the first six months
+              &mdash;
+            </p>
+            <div class="outcomes">
+              <div class="outcome">
+                <div class="n">20k+</div>
+                <div class="l">App downloads across iOS and Android</div>
+              </div>
+              <div class="outcome">
+                <div class="n">45k+</div>
+                <div class="l">Consignments booked in the first six months</div>
+              </div>
+              <div class="outcome">
+                <div class="n">3&times;</div>
+                <div class="l">Revenue since digital booking went live</div>
+              </div>
+            </div>
+            <p class="prose" style="margin-top: 32px; font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.7;">
+              Covered nationally by Times of India, Economic Times, APN News,
+              India Technology News, Energetica India, and Indian Masterminds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="wrap">
+    <nav class="casenav" aria-label="More case studies">
+      <a class="prev" href="bobba.html"><span>Previous</span>Bobba Express</a>
+      <a class="next" href="crm.html"><span>Next</span>Internal CRM</a>
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">
+      <span>&copy; <span id="year"></span> Shiv Kanojiya</span>
+      <span class="foot-loc">Hyderabad / <span id="local-time">&mdash;</span></span>
+    </div>
+    <nav class="foot-right" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/shivkanojiya" target="_blank" rel="noopener">LinkedIn <span class="foot-arrow" aria-hidden="true">&#8599;</span></a>
+      <a href="mailto:shivkanojiya19@gmail.com">Email <span class="foot-arrow" aria-hidden="true">&#8599;</span></a>
+      <button type="button" class="foot-top" aria-label="Back to top">Back to top <span class="foot-arrow" aria-hidden="true">&#8593;</span></button>
+    </nav>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+
+</body>
+</html>
