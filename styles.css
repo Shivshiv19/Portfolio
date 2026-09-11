@@ -1197,19 +1197,43 @@
     .nav-resume[download]::after,  .top nav a.nav-resume-m::after { animation: none; }
   }
 
-  /* Rotating chromatic BorderBeam on the "See how I work with AI" CTA */
-  .nav-resume:not([download]) { position: relative; }
-  .nav-resume:not([download])::before {
-    content: ""; position: absolute; inset: -3px; border-radius: inherit;
-    z-index: -1; pointer-events: none;
-    background: conic-gradient(from var(--rr-a),
-      #4ef0c0, #5db6ff, #7c8bff, #c07bff, #ff5db1, #ffb14e, #d6ff6b, #4ef0c0);
-    filter: blur(9px);
-    opacity: 0.85;
-    animation: rr-spin 2.6s linear infinite;
+  /* "See How I AI" CTA — themed magic-motion button (emerald shapes hug the pill on hover) */
+  .nav-cta {
+    position: relative; display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; overflow: visible;
+    transition: transform .35s cubic-bezier(.34,1.4,.5,1), background .2s ease, box-shadow .25s ease;
   }
+  .nav-cta .cta-text { position: relative; z-index: 3; }
+  .nav-cta::after {
+    content: ""; position: absolute; inset: -4px; border-radius: inherit; z-index: 0; pointer-events: none;
+    background: radial-gradient(60% 120% at 50% 50%, rgba(15,107,84,.45), rgba(15,107,84,0) 70%);
+    filter: blur(10px); opacity: 0; transition: opacity .35s ease;
+  }
+  .nav-cta .shape {
+    position: absolute; inset: 0; margin: auto; z-index: 1; pointer-events: none; opacity: 0;
+    filter: drop-shadow(0 3px 5px rgba(12,70,54,.30));
+    transition: transform .55s cubic-bezier(.34,1.32,.5,1), opacity .45s ease;
+  }
+  .nav-cta .s-cone { width: 20px; height: 20px; background: linear-gradient(150deg, #7cc3ab, var(--mark));
+    clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: translate(-52px,4px) rotate(26deg) scale(.55); }
+  .nav-cta .s-torus { width: 34px; height: 34px; border-radius: 50%;
+    background: radial-gradient(circle, transparent 38%, #3f9c81 40% 58%, transparent 60%);
+    transform: translate(14px,-12px) scale(.55); }
+  .nav-cta .s-ico { width: 30px; height: 30px; background: linear-gradient(145deg, #7cc3ab, var(--mark));
+    clip-path: polygon(50% 0, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%); transform: translate(52px,-8px) rotate(-16deg) scale(.55); }
+  .nav-cta .s-sphere { width: 28px; height: 28px; border-radius: 50%;
+    background: radial-gradient(circle at 34% 28%, #7cc3ab, var(--mark) 80%); transform: translate(-16px,12px) scale(.55); }
+  .nav-cta:hover { transform: scale(1.08); background: #0c5a46; box-shadow: 0 10px 24px rgba(15,107,84,.34); }
+  .nav-cta:hover::after { opacity: 1; }
+  .nav-cta:hover .shape { opacity: 1; }
+  .nav-cta:hover .s-cone   { transform: translate(-78px,0)    rotate(26deg) scale(1); }
+  .nav-cta:hover .s-torus  { transform: translate(20px,-18px) scale(1); }
+  .nav-cta:hover .s-ico    { transform: translate(78px,-12px) rotate(-16deg) scale(1); }
+  .nav-cta:hover .s-sphere { transform: translate(-26px,18px) scale(1); }
   @media (prefers-reduced-motion: reduce) {
-    .nav-resume:not([download])::before { animation: none; }
+    .nav-cta, .nav-cta .shape { transition: none; }
+    .nav-cta:hover { transform: none; }
+    .nav-cta:hover .shape { opacity: 0; }
   }
 
   /* Particle-name band (replaces the old photo marquee) */
